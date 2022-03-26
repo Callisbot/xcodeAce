@@ -6,13 +6,9 @@ xcodeDir=$(xcode-select -p)
 #< functions
 check() {
   # This checks for flags
-  while getopts 'xb' flag; do
+  while getopts 'x' flag; do
     case "${flag}" in
       x) xcodeCall $@;;
-      b) brewCall $@ ;;
-      f) files="${OPTARG}" ;;
-      v) verbose='true' ;;
-      *) print_usage
          exit 1 ;;
     esac
   done
