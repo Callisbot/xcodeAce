@@ -6,10 +6,12 @@ xcodeDir=$(xcode-select -p)
 #< functions
 check() {
   # This checks for flags
+  if [ -z "$GETOPS" ]; then
+    printf "No argument supplied. Use -xh for more information.\n"
+  fi
   while getopts 'x' flag; do
     case "${flag}" in
       x) xcodeCall $@;;
-         exit 1 ;;
     esac
   done
 }
@@ -35,6 +37,7 @@ xcodeCall() {
       r) xcodeRemove ;;
       u) xcodeUpdate ;;
       h) xcodeHelp ;;
+      *) xcodeHelp ;;
     esac
   done
 }
